@@ -1,0 +1,15 @@
+.container {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+span, p {
+    color: red;
+    font-size: 12px;
+}
+
+button{
+    margin:15px 20px;
+}
+
+

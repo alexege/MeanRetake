@@ -1,0 +1,36 @@
+<div class="container">
+    <span>-add-movie.component.html-</span>
+    <h1>New Product</h1>
+
+    <ul *ngIf="errors">
+        <li class="errors" *ngFor="let error of errors">{{error}}</li>
+    </ul>
+    <!-- {{newProduct | json}} -->
+    <form name="newProductForm" #newProductForm="ngForm" (submit)="submitNewProduct()">
+    
+    <span>{{errors?.name?.message}}</span><br *ngIf="errors?.name">
+    <p *ngIf="newProduct.name.length < 3 && name.pristine==false">Name must be at least 3 characters long.</p>
+    <label for="name">Name</label>
+    <input type="text" name="newProduct.name" required minlength="3" [(ngModel)]="newProduct.name" #name="ngModel">
+    
+    <br>
+    <span>{{errors?.qty?.message}}</span><br *ngIf="errors?.qty">
+    <p *ngIf="newProduct.qty < 0 && qty.pristine==false">Quantity must be 0 or greater.</p>    
+    <label for="qty">Qty</label>
+    <input type="number" name="newProduct.qty" required [(ngModel)] = "newProduct.qty" #qty="ngModel">
+    
+    <br>
+    <span>{{errors?.price?.message}}</span><br *ngIf="errors?.price">
+    <p *ngIf="newProduct.price < 0 && price.pristine==false">Price must be 0 or greater.</p>    
+    <label for="price">Price</label>
+    <input type="number" name="newProduct.price" required [(ngModel)] = "newProduct.price" #price="ngModel">
+    
+    <br>
+
+    <a [routerLink]="['/']"><button class="resetButton">Reset</button></a>
+    <!-- <input class="createButton" type="submit" value="Create"> -->
+    <input [disabled]="newProduct.name.length < 3 || newProduct.qty == '' || newProduct.price == ''" class="createButton" type="submit" value="Create">
+
+    </form>
+
+</div>

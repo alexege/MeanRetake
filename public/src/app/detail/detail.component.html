@@ -1,0 +1,24 @@
+<div class="container">
+    <h2>Product Details</h2>
+    <table *ngIf="current_product" class="table table-striped">
+    <tr>
+        <td>Name</td>
+        <td>{{current_product.name}}</td>
+    </tr>
+    <tr>
+        <td>Qty</td>
+        <td>{{current_product.qty}}</td>
+    </tr>
+    <tr>
+        <td>Price</td>
+        <td>{{current_product.price}}</td>
+    </tr>
+    <tr>
+        <td>
+            <p *ngIf="current_product.qty != 0" class="error">To delete a product, the Qty must be 0.</p>
+        </td>
+    </tr>
+    </table>
+    <a [routerLink]="['/']"><button class="btn btn-success">Back</button></a>
+    <button (click)="delete(current_product._id)" [disabled]="current_product?.qty != 0" class="btn btn-danger">Delete</button>
+</div>

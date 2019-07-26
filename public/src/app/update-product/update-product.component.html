@@ -1,0 +1,49 @@
+<h2>Update Product</h2>
+<div class="container">
+<ul *ngIf="errors">
+  <li class="errors" *ngFor="let error of errors">{{error}}</li>
+</ul>
+<div  *ngIf="updated_product">  
+  <form name="editProductForm" #editProductForm="ngForm" (submit)="updateProduct()">
+    <table class="table table-striped">
+        <tr>
+            <td>
+                <label for="name">Name</label>
+            </td>
+            <td>
+                <p class="small text-danger">{{errors?.name?.message}}</p>
+                <p class="small text-danger" *ngIf="updated_product.name.length < 3">Must be at least 3 characters long</p>
+                <input type="text" name="updated_product.name" required minlength="3" [(ngModel)]="updated_product.name" #name="ngModel">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="qty">Qty</label>
+            </td>
+            <td>
+                <p class="small text-danger">{{errors?.qty?.message}}</p>
+                <p class="small text-danger" *ngIf="updated_product.qty < 0">Must be greater than 0.</p>
+                <input type="number" name="updated_product.qty" required [(ngModel)]="updated_product.qty" #qty="ngModel">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="price">Price</label>
+            </td>
+            <td>
+                <p class="small text-danger">{{errors?.price?.message}}</p>
+                <p class="small text-danger" *ngIf="updated_product.price < 0">Must be greater than 0.</p>
+                <input type="number" name="updated_product.price" required [(ngModel)]="updated_product.price" #price="ngModel">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input [disabled]="updated_product.name.length < 3 || updated_product.qty < 0 || updated_product.price < 0" id="updateButton" type="submit" value="UPDATE" class="btn btn-success">
+            </td>
+        </tr>
+    </table>
+    <br>
+  </form>
+  <button (click)="resetFields()" class="btn btn-danger reset">Reset</button>
+</div>
+</div>

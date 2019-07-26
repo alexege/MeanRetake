@@ -1,0 +1,21 @@
+button{
+    margin-left: 10px;
+}
+
+.container {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: left;
+    padding: 15px;
+}
+
+span {
+    color: red;
+    font-size: 12px;
+}
+
+.error {
+    color: purple;
+    font-size: 14px;
+    font-weight: bold;
+}
